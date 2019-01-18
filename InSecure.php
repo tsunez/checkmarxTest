@@ -24,4 +24,4 @@ if ($_SESSION['user_logged_in'] !== true) {
   header('Location: /login.php');
 }
 
-//omg_important_private_functionality_here();
+// Important private logic that shouldn't happen because we've already redirected the user!
