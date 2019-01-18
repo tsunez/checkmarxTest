@@ -10,6 +10,13 @@ mysql_query("SELECT * FROM sometable WHERE id = $var");
 $var = $_POST['var'];
 echo "<div>$var</div>\n";
 
+
+//
+/// 2nd XSS example
+//
+$var = $_POST['varB'];
+echo "<div>$varB</div>\n";
+
 //
 /// Forget to terminate user input after a redirect
 //
