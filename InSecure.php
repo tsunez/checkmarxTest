@@ -1,6 +1,6 @@
 <?php
 
-// First a SQL Injection attack V8
+// First a SQL Injection attack V9
 $var = $_POST['var'];
 mysql_query("SELECT * FROM sometable WHERE id = $var");
 
