@@ -1,6 +1,6 @@
 <?php
 
-// Updated to trigger CxFlow 7
+// Updated to trigger CxFlow 8
 
 // First a SQL Injection attack V9
 $var = $_POST['var'];
