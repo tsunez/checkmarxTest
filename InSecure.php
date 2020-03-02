@@ -3,8 +3,8 @@
 // Updated to trigger CxFlow 87
 
 // First a SQL Injection attack V9
-//$var = $_POST['var'];
-//mysql_query("SELECT * FROM sometable WHERE id = $var");
+$var = $_POST['var'];
+mysql_query("SELECT * FROM sometable WHERE id = $var");
 
 //
 /// XSS example
