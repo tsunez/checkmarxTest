@@ -19,4 +19,4 @@ jobs:
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
           scan_types: sast,kics
-          ADDITIONAL_PARAMS: "Hello World"
+          ADDITIONAL_PARAMS: "Hello \nWorld\""
