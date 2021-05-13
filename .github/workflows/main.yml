@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - master
+      - gh_action_test
 
 jobs:
   build:
