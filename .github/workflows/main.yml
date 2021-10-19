@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Checkmarx AST CLI Action
-        uses: checkmarx/ast-github-action@master #Github Action version
+        uses: checkmarx/ast-github-action@feature/annotations #Github Action version
         with:
           base_uri: https://ast-master.dev.cxast.net
           cx_client_id: ${{ secrets.CLIENT_ID }}
