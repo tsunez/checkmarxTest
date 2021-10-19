@@ -16,5 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
             node-version: 12
+      - name: test version
+        run: node -e 'console.log("v1")'
       - name: annotate
-        run: node -e 'console.log("hello")'
+        run: node annotate.js
