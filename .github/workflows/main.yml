@@ -20,3 +20,9 @@ jobs:
           cx_client_secret: ${{ secrets.SECRET }}
           project_name: GHTest1018
           cx_tenant: organization
+
+      - name: annotate
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: npm ci 
