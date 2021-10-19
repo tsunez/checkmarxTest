@@ -12,13 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Checkmarx AST CLI Action
-        uses: checkmarx/ast-github-action@feature/annotations #Github Action version
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
         with:
-          base_uri: https://ast-master.dev.cxast.net
-          cx_client_id: ${{ secrets.CLIENT_ID }}
-          cx_client_secret: ${{ secrets.SECRET }}
-          project_name: GHTest1018
-          cx_tenant: organization
+            node-version: 12
       - name: annotate
-        uses: ./
+        run: node -e 'console.log("hello")'
