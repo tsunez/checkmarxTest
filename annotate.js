@@ -59,7 +59,7 @@ const createAnotations = async () => {
         owner,
         repo,
         url,
-        method: 'GET',
+        method: 'POST',
         name: 'TestCheck',
         path: 'check-runs',
         headSha
