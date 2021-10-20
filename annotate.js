@@ -7,6 +7,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 console.log("Adding AST Result Annotations");
+const JEFF = core.getInput('JEFF');
+console.log("Jeff: " + foo)
 const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
 console.log("Token: " + GITHUB_TOKEN)
 const octokit = github.getOctokit(GITHUB_TOKEN);
