@@ -1,6 +1,7 @@
 // HACK TO WORK WITH GH Actions
-const require = global.require || global.process.mainModule.constructor._load;
-
+const require = global.require || global.process.mainModule._load;
+//import { createRequire } from 'module';
+//const require = createRequire(import.meta.url);
 
 const core = require('@actions/core');
 const github = require('@actions/github');
