@@ -4,7 +4,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 //const core = require('@actions/core');
-const github = require('@actions/github');
+const Github = require('@actions/github');
 
 console.log("Adding AST Result Annotations");
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -16,10 +16,10 @@ const github = new Github(token)
 await github.createCheck("AST Annotations")
 
 
-const { context = {} } = github;
-const { pull_request } = context.payload;
+//const { context = {} } = github;
+//const { pull_request } = context.payload;
 
-console.log(octokit.issues)
+//console.log(octokit.issues)
 //octokit.
 // Create comment
 //octokit.issues.createComment()
