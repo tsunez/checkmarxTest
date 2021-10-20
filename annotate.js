@@ -85,13 +85,13 @@ const createAnotations = async () => {
     })
     const headSha = refData.object.sha
     console.log("sha: " + headSha)
-
+console.log(`Bearer ${token}`)
     // Create the check run
     await octokit.request({
         headers: {
             //authentication: `token ${token}`,
             //authorization: "token " + token
-            authorization: `bearer ${token}`,
+            authorization: `Bearer ${token}`,
         },
         owner,
         repo,
