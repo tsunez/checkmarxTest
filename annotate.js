@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 
 console.log("Adding AST Result Annotations");
 const GH_TOKEN = process.env.GH_TOKEN;
-const APP_KEY = process.env.APP_KEY;
+const privateKey = process.env.APP_KEY;
 const APP_ID = process.env.APP_ID;
 
 //const octokit = github.getOctokit(GITHUB_TOKEN);
@@ -35,11 +35,12 @@ const { Octokit } = require('@octokit/rest');
 const { createAppAuth } = require("@octokit/auth-app");
 
 // Token based auth
-const tokenOctokit = new Octokit({
+const octokit = new Octokit({
     auth: GH_TOKEN,
 });
 
 // App based auth
+/*
 const appOctokit = new Octokit({
     authStrategy: createAppAuth,
     auth: {
@@ -48,6 +49,19 @@ const appOctokit = new Octokit({
       clientId: APP_ID
     },
 });
+*/
+
+
+const auth = createAppAuth({
+    id: 1,
+    privateKey,
+    installationId: 146135,
+    clientId: 'Iv1.dc2272c7e822d613',
+    clientSecret: 'xxxxxx',
+});   
+const appAuthentication = await auth({ type: 'app' });
+console.log(`Git repo token: ` + appAuthentication.token);
+
 
 
 const owner = 'tsunez';
@@ -64,7 +78,7 @@ const ref =  'heads/gh_action_test';
 const createAnotations = async () => {
 
     // Locate the branch to put the annotations on
-    const { data: refData } = await tokenOctokit.git.getRef({
+    const { data: refData } = await octokit.git.getRef({
         owner,
         repo,
         ref
@@ -74,6 +88,9 @@ const createAnotations = async () => {
 
     // Create the check run
     await octokit.request({
+        headers: {
+            authorization: 'token ' + appAuthentication.token,
+        },
         owner,
         repo,
         url,
