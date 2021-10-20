@@ -57,7 +57,7 @@ const auth = createAppAuth({
     privateKey: APP_KEY,
     installationId: 146135,
     clientId: 'Iv1.dc2272c7e822d613',
-    clientSecret: APP_SECRET,
+    clientSecret: "JUNK",
 });   
 const { token } = await auth({ type: "app" });
 //const { token } = await auth({ type: "installation" });
@@ -90,7 +90,6 @@ const createAnotations = async () => {
         headers: {
             //authentication: `token ${token}`,
             authorization: `token ${token}`
-            //authorization: "token " + token
             //authorization: `Bearer ${token}`,
         },
         owner,
