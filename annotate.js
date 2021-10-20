@@ -44,12 +44,21 @@ const ref =  'heads/master';
 
 // Test Code
 const getContents = async () => {
+
+    const { data: refData } = await octokit.git.getRef({
+        owner,
+        repo,
+        ref: "heads/gh_action_test",
+    })
+    const commitSha = refData.object.sha
+    console.log("sha: " + commitSha)
+
     const { data } = await octokit.request({
         owner,
         repo,
         url,
         method: 'GET',
-        path: 'contents', // gets the whole repo
+        path: 'contents',
     });
     console.log(data)
 }
@@ -72,7 +81,5 @@ await octokit.issues.createComment({
     body: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'
 });
 */
-
-console.log("PtsToken: " + GH_TOKEN)
 
 console.log("Done creating AST tokens")
