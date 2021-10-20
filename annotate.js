@@ -53,10 +53,11 @@ const appOctokit = new Octokit({
 });
 */
 
- 
+console.log(APP_KEY) 
+
 const auth = createAppAuth({
     appId: 1,
-    privateKey: "dfdfdfd",
+    privateKey: APP_KEY,
     installationId: 146135,
     clientId: 'Iv1.dc2272c7e822d613',
     clientSecret: APP_SECRET,
