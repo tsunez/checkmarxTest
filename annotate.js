@@ -43,16 +43,31 @@ const ref =  'heads/master';
 
 
 // Test Code
-const getContents = async () => {
+const createAnotations = async () => {
 
+    // Locate the branch to put the annotations on
     const { data: refData } = await octokit.git.getRef({
         owner,
         repo,
         ref: "heads/gh_action_test",
     })
-    const commitSha = refData.object.sha
+    const headSha = refData.object.sha
     console.log("sha: " + commitSha)
 
+    // Create the check run
+    await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
+        owner,
+        repo,
+        name: 'TestCheck',
+        headSha
+      })  
+    console.log("Done creating check")
+}
+createAnotations()
+
+
+const getContents = async () => {
+    // Create the annotation
     let head = "gh_action_test"
     const { data } = await octokit.request({
         owner,
@@ -65,8 +80,6 @@ const getContents = async () => {
     console.log(data)
 }
 getContents();
-
-
 
 
 //const { context = {} } = github;
