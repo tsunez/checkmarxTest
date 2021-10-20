@@ -53,11 +53,13 @@ const getContents = async () => {
     const commitSha = refData.object.sha
     console.log("sha: " + commitSha)
 
+    let head = "gh_action_test"
     const { data } = await octokit.request({
         owner,
         repo,
         url,
         method: 'GET',
+        head,
         path: 'contents',
     });
     console.log(data)
