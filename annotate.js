@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 
 console.log("Adding AST Result Annotations");
 const GH_TOKEN = process.env.GH_TOKEN;
-const privateKey = process.env.APP_KEY;
+const APP_KEY = process.env.APP_KEY;
 const APP_ID = process.env.APP_ID;
 const APP_SECRET = process.env.APP_SECRET;
 
@@ -56,7 +56,7 @@ const appOctokit = new Octokit({
 
 const auth = createAppAuth({
     appId: 1,
-    privateKey,
+    privateKey: APP_KEY,
     installationId: 146135,
     clientId: 'Iv1.dc2272c7e822d613',
     clientSecret: APP_SECRET,
