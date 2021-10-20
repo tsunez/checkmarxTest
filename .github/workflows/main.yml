@@ -21,6 +21,8 @@ jobs:
       - name: Annotate
         env:
           GH_TOKEN: ${{secrets.GH_TOKEN}}
+          APP_KEY: ${{secrets.APP_KEY}}
+          APP_SECRET: ${{secrets.APP_SECRET}}
         run: node annotate.js
         
       
