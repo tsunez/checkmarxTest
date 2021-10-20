@@ -4,7 +4,8 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 //const core = require('@actions/core');
-const Github = require('@actions/github');
+//const Github = require('@actions/github');
+const Github = require('@/github');
 
 console.log("Adding AST Result Annotations");
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
