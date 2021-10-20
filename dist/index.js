@@ -1,3 +1,4 @@
+import { createRequire as __WEBPACK_EXTERNAL_createRequire } from "module";
 /******/ "use strict";
 /******/ var __webpack_modules__ = ({
 
@@ -5,10 +6,11 @@
 /***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __nccwpck_require__) => {
 
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__) => {
+/* harmony import */ var module__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(282);
 // HACK TO WORK WITH GH Actions
-const require = global.require || global.process.mainModule._load;
-//import { createRequire } from 'module';
-//const require = createRequire(import.meta.url);
+//const require = global.require || global.process.mainModule._load;
+
+const require = (0,module__WEBPACK_IMPORTED_MODULE_0__.createRequire)("file:///mnt/c/Users/jarms/Sync/Projects/Checkmarx/checkmarxTest/src/annotate.js");
 
 const core = require('@actions/core');
 const github = require('@actions/github');
@@ -33,6 +35,13 @@ console.log("Token: " + GITHUB_TOKEN)
 console.log("Done creating AST tokens")
 __webpack_handle_async_dependencies__();
 }, 1);
+
+/***/ }),
+
+/***/ 282:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("module");
 
 /***/ })
 
