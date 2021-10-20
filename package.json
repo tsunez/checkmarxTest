@@ -1,11 +1,12 @@
 {
   "name": "checkmarxtest",
+  "type": "module",
   "version": "1.0.0",
   "description": "Used for Checkmarx CLI testing",
   "main": "annotate.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build src/annotate.mjs -o dist"
+    "build": "ncc build src/annotate.js -o dist"
   },
   "repository": {
     "type": "git",
