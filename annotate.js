@@ -11,6 +11,8 @@ const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
 console.log("Token: " + GITHUB_TOKEN)
 const octokit = github.getOctokit(GITHUB_TOKEN);
 
+console.log("Got octokit")
+
 const { context = {} } = github;
 const { pull_request } = context.payload;
 
