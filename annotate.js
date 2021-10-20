@@ -61,8 +61,8 @@ const auth = createAppAuth({
     clientId: 'Iv1.dc2272c7e822d613',
     clientSecret: APP_SECRET,
 });   
-const appAuthentication = await auth({ type: 'app' });
-console.log(`Git repo token: ` + appAuthentication.token);
+const { token } = await auth({ type: "installation" });
+console.log(`Git repo token: ` + token);
 
 
 
@@ -91,7 +91,7 @@ const createAnotations = async () => {
     // Create the check run
     await octokit.request({
         headers: {
-            authorization: 'token ' + appAuthentication.token,
+            authorization: "token " + token
         },
         owner,
         repo,
