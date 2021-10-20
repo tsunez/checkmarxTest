@@ -32,7 +32,7 @@ const octokit = new Octokit({
 
 const owner = 'tsunez';
 const repo = 'checkmarxTest';
-author = {
+const author = {
     name: 'Jeff Armstrong',
     email: 'jarmstrong@nezasoft.com',
 };
