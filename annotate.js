@@ -11,7 +11,6 @@ const require = createRequire(import.meta.url);
 console.log("Adding AST Result Annotations");
 const GH_TOKEN = process.env.GH_TOKEN;
 const APP_KEY = process.env.APP_KEY;
-const APP_ID = process.env.APP_ID;
 const APP_SECRET = process.env.APP_SECRET;
 
 
@@ -62,7 +61,7 @@ const auth = createAppAuth({
     clientId: 'Iv1.dc2272c7e822d613',
     clientSecret: APP_SECRET,
 });   
-const { token } = await auth({ type: "installation" });
+const { token } = await auth({ type: "app" });
 console.log(`Git repo token: ` + token);
 
 
