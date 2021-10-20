@@ -19,8 +19,9 @@ jobs:
       - name: Install node dependencies
         run: npm install
       - name: Annotate
-        run: node annotate.js
         env:
           JEFF: "foo"
-          GITHUB_TOKEN: ${secrets.GITHUB_TOKEN}
+          GITHUB_TOKEN: ${secrets.GITHUB_TOKEN}  
+        run: node annotate.js
+        
       
