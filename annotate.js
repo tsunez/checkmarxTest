@@ -12,7 +12,7 @@ console.log("Token: " + GITHUB_TOKEN)
 //const octokit = github.getOctokit(GITHUB_TOKEN);
 console.log("Got octokit")
 
-const github = new Github(token)
+const github = new Github(GITHUB_TOKEN)
 await github.createCheck("AST Annotations")
 
 
