@@ -55,10 +55,13 @@ const createAnotations = async () => {
     console.log("sha: " + headSha)
 
     // Create the check run
-    await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
+    await octokit.request({
         owner,
         repo,
+        url,
+        method: 'GET',
         name: 'TestCheck',
+        path: 'check-runs',
         headSha
       })  
     console.log("Done creating check")
