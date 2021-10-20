@@ -39,7 +39,7 @@ const author = {
     email: 'jarmstrong@nezasoft.com',
 };
 const url =  '/repos/{owner}/{repo}/{path}'; 
-const ref =  'heads/master';
+const ref =  'heads/gh_action_test';
 
 
 // Test Code
@@ -49,13 +49,13 @@ const createAnotations = async () => {
     const { data: refData } = await octokit.git.getRef({
         owner,
         repo,
-        ref: "heads/gh_action_test",
+        ref
     })
     const headSha = refData.object.sha
     console.log("sha: " + headSha)
 
     // Create the check run
-    await octokit.request({
+    await octokit.git.request({
         owner,
         repo,
         url,
