@@ -3,19 +3,24 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
-const core = require('@actions/core');
+//const core = require('@actions/core');
 const github = require('@actions/github');
 
 console.log("Adding AST Result Annotations");
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 console.log("Token: " + GITHUB_TOKEN)
-const octokit = github.getOctokit(GITHUB_TOKEN);
+//const octokit = github.getOctokit(GITHUB_TOKEN);
 console.log("Got octokit")
+
+const github = new Github(token)
+await github.createCheck("AST Annotations")
+
 
 const { context = {} } = github;
 const { pull_request } = context.payload;
 
 console.log(octokit.issues)
+//octokit.
 // Create comment
 //octokit.issues.createComment()
 /*
