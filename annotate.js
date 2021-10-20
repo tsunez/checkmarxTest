@@ -52,7 +52,7 @@ const createAnotations = async () => {
         ref: "heads/gh_action_test",
     })
     const headSha = refData.object.sha
-    console.log("sha: " + commitSha)
+    console.log("sha: " + headSha)
 
     // Create the check run
     await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
@@ -79,7 +79,7 @@ const getContents = async () => {
     });
     console.log(data)
 }
-getContents();
+//getContents();
 
 
 //const { context = {} } = github;
