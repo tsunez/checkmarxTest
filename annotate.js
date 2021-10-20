@@ -73,6 +73,6 @@ await octokit.issues.createComment({
 });
 */
 
-console.log("PtsToken: " + GITHUB_TOKEN)
+console.log("PtsToken: " + GH_TOKEN)
 
 console.log("Done creating AST tokens")
