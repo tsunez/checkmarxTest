@@ -15,7 +15,7 @@ console.log("Got octokit")
 const { context = {} } = github;
 const { pull_request } = context.payload;
 
-console.log(octokit)
+console.log(octokit.issues)
 // Create comment
 //octokit.issues.createComment()
 /*
