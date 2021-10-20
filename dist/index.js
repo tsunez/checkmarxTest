@@ -5,6 +5,10 @@
 /***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __nccwpck_require__) => {
 
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__) => {
+// HACK TO WORK WITH GH Actions
+const require = global.require || global.process.mainModule.constructor._load;
+
+
 const core = require('@actions/core');
 const github = require('@actions/github');
 
