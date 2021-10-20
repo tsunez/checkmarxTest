@@ -10,7 +10,7 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 // HACK TO WORK WITH GH Actions
 //const require = global.require || global.process.mainModule._load;
 
-const require = (0,module__WEBPACK_IMPORTED_MODULE_0__.createRequire)("file:///mnt/c/Users/jarms/Sync/Projects/Checkmarx/checkmarxTest/src/annotate.js");
+const require = (0,module__WEBPACK_IMPORTED_MODULE_0__.createRequire)("file:///mnt/c/Users/jarms/Sync/Projects/Checkmarx/checkmarxTest/annotate.js");
 
 const core = require('@actions/core');
 const github = require('@actions/github');
