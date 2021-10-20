@@ -16,7 +16,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
             node-version: 12
-      - name: test version
-        run: node -e 'console.log("v1")'
-      - name: annotate
-        run: node annotate.js
+      - name: Setup Node Environment
+        run: npm install
+        run: npm run-script build
+      - name: Annotate
+        run: node dist/annotate.js
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
