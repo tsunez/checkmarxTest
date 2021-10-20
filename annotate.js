@@ -52,8 +52,6 @@ const appOctokit = new Octokit({
 });
 */
 
-console.log(APP_KEY) 
-
 const auth = createAppAuth({
     appId: 1,
     privateKey: APP_KEY,
@@ -63,7 +61,6 @@ const auth = createAppAuth({
 });   
 const { token } = await auth({ type: "app" });
 console.log(`Git repo token: ` + token);
-
 
 
 const owner = 'tsunez';
@@ -91,7 +88,7 @@ const createAnotations = async () => {
     // Create the check run
     await octokit.request({
         headers: {
-            authorization: "token " + token
+            authentication: `token ${token}`,
         },
         owner,
         repo,
