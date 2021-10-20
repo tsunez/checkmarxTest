@@ -3,12 +3,16 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
+
 //const core = require('@actions/core');
 //const Github = require('@actions/github');
 //const github = require('@actions/github');
 
 console.log("Adding AST Result Annotations");
 const GH_TOKEN = process.env.GH_TOKEN;
+const privateKey = process.env.APP_KEY;
+const clientId = process.env.APP_ID;
+
 //const octokit = github.getOctokit(GITHUB_TOKEN);
 
 
@@ -28,9 +32,23 @@ console.log(result)
 */
 
 const { Octokit } = require('@octokit/rest');
-const octokit = new Octokit({
+const { createAppAuth } = require("@octokit/auth-app");
+
+// Token based auth
+const tokenOctokit = new Octokit({
     auth: GH_TOKEN,
 });
+
+// App based auth
+const appOctokit = new Octokit({
+    authStrategy: createAppAuth,
+    auth: {
+      appId: 1,
+      privateKey,
+      clientId
+    },
+});
+
 
 const owner = 'tsunez';
 const repo = 'checkmarxTest';
@@ -46,7 +64,7 @@ const ref =  'heads/gh_action_test';
 const createAnotations = async () => {
 
     // Locate the branch to put the annotations on
-    const { data: refData } = await octokit.git.getRef({
+    const { data: refData } = await tokenOctokit.git.getRef({
         owner,
         repo,
         ref
