@@ -55,7 +55,7 @@ const createAnotations = async () => {
     console.log("sha: " + headSha)
 
     // Create the check run
-    await octokit.git.request({
+    await octokit.request({
         owner,
         repo,
         url,
