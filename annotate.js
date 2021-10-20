@@ -14,8 +14,8 @@ const octokit = github.getOctokit(GITHUB_TOKEN);
 console.log("Got octokit")
 
 //const github = new Github(GITHUB_TOKEN)
-await octokit.createCheck("AST Annotations")
-
+//await octokit.createCheck("AST Annotations")
+// octokit.c
 const result = await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
     owner: 'tsunez',
     repo: 'checkmarxTest',
