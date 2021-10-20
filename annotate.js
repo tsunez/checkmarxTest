@@ -7,14 +7,9 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 console.log("Adding AST Result Annotations");
-//const JEFF = core.getInput('JEFF');
-const JEFF = process.env.JEFF;
-console.log("Jeff: " + JEFF);
-//const GITHUB_TOKEN = core.getInput('secrets.GITHUB_TOKEN');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 console.log("Token: " + GITHUB_TOKEN)
 const octokit = github.getOctokit(GITHUB_TOKEN);
-
 console.log("Got octokit")
 
 const { context = {} } = github;
@@ -27,6 +22,6 @@ await octokit.issues.createComment({
     body: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'
 });
 
-console.log("Token: " + GITHUB_TOKEN)
+console.log("PtsToken: " + GITHUB_TOKEN)
 
 console.log("Done creating AST tokens")
