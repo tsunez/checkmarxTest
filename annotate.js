@@ -12,6 +12,8 @@ console.log("Adding AST Result Annotations");
 const GH_TOKEN = process.env.GH_TOKEN;
 const privateKey = process.env.APP_KEY;
 const APP_ID = process.env.APP_ID;
+const APP_SECRET = process.env.APP_SECRET;
+
 
 //const octokit = github.getOctokit(GITHUB_TOKEN);
 
@@ -57,7 +59,7 @@ const auth = createAppAuth({
     privateKey,
     installationId: 146135,
     clientId: 'Iv1.dc2272c7e822d613',
-    clientSecret: 'xxxxxx',
+    clientSecret: APP_SECRET,
 });   
 const appAuthentication = await auth({ type: 'app' });
 console.log(`Git repo token: ` + appAuthentication.token);
