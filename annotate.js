@@ -57,7 +57,7 @@ const auth = createAppAuth({
     privateKey: APP_KEY,
     installationId: 146135,
     clientId: 'Iv1.dc2272c7e822d613',
-    clientSecret: "JUNK",
+    clientSecret: APP_SECRET,
 });   
 const { token } = await auth({ type: "app" });
 //const { token } = await auth({ type: "installation" });
