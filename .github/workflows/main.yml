@@ -20,7 +20,7 @@ jobs:
         run: npm install
       - name: Annotate
         env:
-          GITHUB_TOKEN: ${secrets.GH_TOKEN}
+          GH_TOKEN: ${secrets.GH_TOKEN}
         run: node annotate.js
         
       

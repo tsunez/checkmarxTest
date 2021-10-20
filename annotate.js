@@ -8,9 +8,11 @@ const require = createRequire(import.meta.url);
 //const github = require('@actions/github');
 
 console.log("Adding AST Result Annotations");
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GH_TOKEN = process.env.GH_TOKEN;
 //const octokit = github.getOctokit(GITHUB_TOKEN);
 
+
+//console.log("token: " + GH_TOKEN)
 
 //const github = new Github(GITHUB_TOKEN)
 //await octokit.createCheck("AST Annotations")
@@ -27,7 +29,7 @@ console.log(result)
 
 const { Octokit } = require('@octokit/rest');
 const octokit = new Octokit({
-    auth: GITHUB_TOKEN,
+    auth: GH_TOKEN,
 });
 
 const owner = 'tsunez';
