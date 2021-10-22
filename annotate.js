@@ -30,6 +30,7 @@ const octokit = new Octokit({
 });
 
 const url =  '/repos/{owner}/{repo}/{path}'; 
+const checkURL = '/repos/{owner}/{repo}/check-runs/{check_run_id}';
 const owner = 'tsunez';
 const repo = 'checkmarxTest';
 const ref =  'heads/gh_action_test';
@@ -44,25 +45,23 @@ const createAnotations = async () => {
     })
     const headSha = refData.object.sha
     console.log("sha: " + headSha)
+    
+    let check_run_id = GITHUB_RUN_ID;
     //
-    /// Create the check run
+    /// Get annotations
     //
-    /*
-    console.log("GH: " + APP_GH_KEY)
     const result = await octokit.request({
         headers: {
             authorization: `token ${APP_GH_KEY}`
         },
         owner,
         repo,
-        url,
+	check_run_id,
+        checkURL,
         method: 'POST',
-        name: 'TestCheck',
-        path: 'check-runs',
-        head_sha: headSha
+        path: 'annotations',
       })
     console.log(result)
-    */
     console.log("Done creating check")
 }
 createAnotations()
