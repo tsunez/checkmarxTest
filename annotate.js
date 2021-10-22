@@ -36,11 +36,13 @@ const octokit = new Octokit({
 const octokit = new Octokit({
   baseUrl: 'https://api.github.com'
 })
+/*
 octokit.authenticate({
   type: 'basic',
   username: 'jarmstrong@nezasoft.com',
   password: GH_TOKEN
 });
+*/
 
 
 const url =  '/repos/{owner}/{repo}/{path}'; 
