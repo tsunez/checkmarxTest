@@ -26,16 +26,16 @@ const octokit = new Octokit({
 });
 */
 
-//const octokit = new Octokit({
-//});
+const octokit = new Octokit({
+});
 
 //const octokit = new Octokit({
 //  baseUrl: 'https://api.github.<my domain>.com'
 //})
 
-const octokit = new Octokit({
-  baseUrl: 'https://api.github.com'
-})
+//const octokit = new Octokit({
+//  baseUrl: 'https://api.github.com'
+//})
 /*
 octokit.authenticate({
   type: 'basic',
