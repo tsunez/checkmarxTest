@@ -20,6 +20,10 @@ jobs:
         run: npm install
       - name: Annotate
         env:
+          GITHUB_RUN_ID: ${{GITHUB_RUN_ID}}
+          APP_ID: ${{secrets.APP_ID}}
+          APP_INSTALL_ID: ${{secrets.APP_INSTALL_ID}}
+          APP_CLIENT_ID: ${{secrets.APP_CLIENT_ID}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           APP_KEY: ${{secrets.APP_KEY}}
           APP_SECRET: ${{secrets.APP_SECRET}}
