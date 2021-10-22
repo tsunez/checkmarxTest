@@ -7,7 +7,7 @@ const { createAppAuth } = require("@octokit/auth-app");
 
 console.log("Adding AST Result Annotations");
 // Removed these
-//const GH_TOKEN = process.env.GH_TOKEN;
+const GH_TOKEN = process.env.GH_TOKEN;
 
 const APP_GH_KEY = process.env.APP_GH_KEY;
 const GITHUB_RUN_ID = process.env.GITHUB_RUN_ID;
@@ -26,8 +26,22 @@ const octokit = new Octokit({
 });
 */
 
+//const octokit = new Octokit({
+//});
+
+//const octokit = new Octokit({
+//  baseUrl: 'https://api.github.<my domain>.com'
+//})
+
 const octokit = new Octokit({
+  baseUrl: 'https://api.github.com'
+})
+octokit.authenticate({
+  type: 'basic',
+  username: 'jarmstrong@nezasoft.com',
+  password: GH_TOKEN
 });
+
 
 const url =  '/repos/{owner}/{repo}/{path}'; 
 const checkURL = '/repos/{owner}/{repo}/check-runs/{check_run_id}';
@@ -51,9 +65,9 @@ const createAnotations = async () => {
     /// Get annotations
     //
     const result = await octokit.request({
-        headers: {
-            authorization: `token ${APP_GH_KEY}`
-        },
+        //headers: {
+        //    authorization: `token ${APP_GH_KEY}`
+        //},
         owner,
         repo,
 	check_run_id,
