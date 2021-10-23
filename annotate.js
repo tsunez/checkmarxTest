@@ -62,24 +62,22 @@ const createAnotations = async () => {
     const headSha = refData.object.sha
     console.log("sha: " + headSha)
     
-    let check_run_id = GITHUB_RUN_ID;
+    // let check_run_id = GITHUB_RUN_ID;
     //
     /// Get annotations
     //
-    /*
     const result = await octokit.request({
         //headers: {
         //    authorization: `token ${APP_GH_KEY}`
         //},
         owner,
         repo,
-	check_run_id,
-        checkURL,
-        method: 'POST',
-        path: 'annotations',
+	check_run_id: GITHUB_RUN_ID,
+        url,
+        method: 'GET',
+        path: 'check-runs',
       })
     console.log(result)
-    */
     console.log("Done creating check")
 }
 createAnotations()
