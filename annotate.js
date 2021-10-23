@@ -62,7 +62,7 @@ const createAnotations = async () => {
     const headSha = refData.object.sha
     console.log("sha: " + headSha)
     
-    // let check_run_id = GITHUB_RUN_ID;
+    let check_run_id = GITHUB_RUN_ID;
     //
     /// Get annotations
     //
@@ -72,10 +72,9 @@ const createAnotations = async () => {
         //},
         owner,
         repo,
-	check_run_id: GITHUB_RUN_ID,
-        url,
-        method: 'GET',
-        path: 'check-runs',
+	check_run_id,
+        checkURL,
+        method: 'GET'
       })
     console.log(result)
     console.log("Done creating check")
