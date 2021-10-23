@@ -104,7 +104,7 @@ const createAnotations = async () => {
 createAnotations()
 
 
-function makeAnnotation(raw: RawAnnotation): Annotation {
+function makeAnnotation(raw: RawAnnotation) {
   // Chop `./` off the front so that Github will recognize the file path
   /*
   const normalized_path = raw.filename.replace('./', '');
