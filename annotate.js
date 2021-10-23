@@ -66,6 +66,7 @@ const createAnotations = async () => {
     //
     /// Get annotations
     //
+    /*
     const result = await octokit.request({
         //headers: {
         //    authorization: `token ${APP_GH_KEY}`
@@ -78,6 +79,7 @@ const createAnotations = async () => {
         path: 'annotations',
       })
     console.log(result)
+    */
     console.log("Done creating check")
 }
 createAnotations()
