@@ -70,11 +70,11 @@ const createAnotations = async () => {
     //
     let annotations = [];
     const annotation = makeAnnotation({
-        filename: groups.filename,
-        lineNumber: parseInt(groups.lineNumber),
-        columnNumber: parseInt(groups.columnNumber),
-        errorCode: groups.errorCode,
-        errorDesc: groups.errorDesc,
+        filename: "",
+        lineNumber: parseInt(1),
+        columnNumber: parseInt(1),
+        errorCode: "",
+        errorDesc: "",
       });
     annotations.push(annotation);
 
