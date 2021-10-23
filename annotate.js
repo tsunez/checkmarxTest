@@ -63,9 +63,26 @@ const createAnotations = async () => {
     console.log("sha: " + headSha)
     
     let check_run_id = GITHUB_RUN_ID;
+   
+
+    //
+    /// Lets add some annotations
+    //
+    let annotations: Annotation[] = [];
+    const annotation = makeAnnotation({
+        filename: groups.filename,
+        lineNumber: parseInt(groups.lineNumber),
+        columnNumber: parseInt(groups.columnNumber),
+        errorCode: groups.errorCode,
+        errorDesc: groups.errorDesc,
+      });
+    annotations.push(annotation);
+
+
     //
     /// Get annotations
     //
+    /*
     const result = await octokit.request({
         //headers: {
         //    authorization: `token ${APP_GH_KEY}`
@@ -77,9 +94,36 @@ const createAnotations = async () => {
         method: 'GET'
       })
     console.log(result)
+    */
     console.log("Done creating check")
 }
 createAnotations()
+
+
+function makeAnnotation(raw: RawAnnotation): Annotation {
+  // Chop `./` off the front so that Github will recognize the file path
+  /*
+  const normalized_path = raw.filename.replace('./', '');
+  const annotation_level = (getAnnotationLevel() == 'warning') ?
+    <const>'warning' :
+    <const>'failure';
+  */
+  const normalized_path = 'InSecure.php';
+  const annotation_level = 'warning';
+  return {
+    path: normalized_path,
+    start_line: 4,
+    end_line: 4,
+    start_column: 0,
+    end_column: 0,
+    annotation_level: annotation_level,
+    message: 'I am a message'
+  }
+}
+
+
+
+
 
 const getContents = async () => {
     // Create the annotation
