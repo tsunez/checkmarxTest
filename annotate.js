@@ -4,6 +4,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { Octokit } = require('@octokit/rest');
 const { createAppAuth } = require("@octokit/auth-app");
+import * as core from '@actions/core';
 
 console.log("Adding AST Result Annotations");
 // Removed these
