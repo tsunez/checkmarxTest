@@ -68,7 +68,7 @@ const createAnotations = async () => {
     //
     /// Lets add some annotations
     //
-    let annotations: Annotation[] = [];
+    let annotations = [];
     const annotation = makeAnnotation({
         filename: groups.filename,
         lineNumber: parseInt(groups.lineNumber),
@@ -77,6 +77,10 @@ const createAnotations = async () => {
         errorDesc: groups.errorDesc,
       });
     annotations.push(annotation);
+
+    const checkName = core.getInput('check_name');
+    console.log("Check Name: " + checkName);
+    //await createCheck(checkName, 'failures detected', annotations);
 
 
     //
