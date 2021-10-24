@@ -6,6 +6,16 @@ const { Octokit } = require('@octokit/rest');
 const { createAppAuth } = require("@octokit/auth-app");
 import * as core from '@actions/core';
 import * as github from '@actions/github';
+import { createActionAuth } from "@octokit/auth-action";
+
+const auth = createActionAuth();
+const authentication = await auth();
+// {
+//   type: 'token',
+//   token: 'v1.1234567890abcdef1234567890abcdef12345678',
+//   tokenType: 'oauth'
+// }
+
 
 console.log("Adding AST Result Annotations");
 // Removed these
@@ -20,14 +30,18 @@ const GITHUB_RUN_ID = process.env.GITHUB_RUN_ID;
 //const APP_KEY = process.env.APP_KEY;
 const APP_CLIENT_ID = process.env.APP_CLIENT_ID;
 
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+
+
 console.log("RUN ID: " + GITHUB_RUN_ID);
+
+// Use actions environment variable GITHUB_TOKEN
+//const auth = createActionAuth();
+//const authentication = await auth();
 
 // Token based auth, if tokens are supported
 const octokit = new Octokit({
-    authStrategy: createAppAuth,
-    auth: { 
-	appId: APP_CLIENT_ID, 
-	privateKey: APP_GH_KEY },
+ auth: GITHUB_TOKEN,
 });
 
 
@@ -40,17 +54,6 @@ const octokit = new Octokit({
 //const octokit = new Octokit({
 //  baseUrl: 'https://api.github.<my domain>.com'
 //})
-
-//const octokit = new Octokit({
-//  baseUrl: 'https://api.github.com'
-//})
-/*
-octokit.authenticate({
-  type: 'basic',
-  username: 'jarmstrong@nezasoft.com',
-  password: GH_TOKEN
-});
-*/
 
 
 const url =  '/repos/{owner}/{repo}/{path}'; 
