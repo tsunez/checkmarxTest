@@ -5,6 +5,7 @@ const require = createRequire(import.meta.url);
 const { Octokit } = require('@octokit/rest');
 const { createAppAuth } = require("@octokit/auth-app");
 import * as core from '@actions/core';
+import * as github from '@actions/github';
 
 console.log("Adding AST Result Annotations");
 // Removed these
