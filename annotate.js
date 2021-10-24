@@ -64,7 +64,7 @@ const repo = 'checkmarxTest';
 const ref =  'heads/gh_action_test';
 
 
-console.log("Checking token");
+console.log("Checking tokenV2");
 const val = await octokit.rest.apps.checkToken({
   APP_CLIENT_ID,
   APP_GH_KEY,
