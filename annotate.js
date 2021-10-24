@@ -129,7 +129,7 @@ const runTest2 = async(check_run_id) => {
 }
 
 // Will show authentication error
-vconst runTest3 = async(check_run_id) => {
+const runTest3 = async(check_run_id) => {
   console.log("Check run id: " + check_run_id);
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
     headers: {
@@ -143,7 +143,7 @@ vconst runTest3 = async(check_run_id) => {
     catch(error => { console.log('caught', error.message); });
 }
 
-vconst runTest4 = async(check_run_id) => {
+const runTest4 = async(check_run_id) => {
   console.log("Check run id: " + check_run_id);
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
     headers: {
