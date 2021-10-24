@@ -129,7 +129,7 @@ const createAnotations = async () => {
     //
     let annotations = [];
     const annotation = makeAnnotation({
-        filename: "InSecure.php",
+        filename: ".github/workflows/main.yml",
         lineNumber: parseInt(1),
         columnNumber: parseInt(1),
         errorCode: "1",
