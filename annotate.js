@@ -76,6 +76,11 @@ async function createCheck(check_name, title, annotations, commitSha) {
   const res = await octokit.rest.checks.listForRef(req);
   console.log(res)
 
+  if(res.total_count > 1) {
+    console.log("Found check");
+    console.log(res.check_runs[0]);
+  }
+
   return;
   /*
   const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
