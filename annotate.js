@@ -95,7 +95,7 @@ async function createCheck(check_name, title, annotations, commitSha) {
     }
     console.log("STep 2")
     console.log(update_req)
-    await octokit.checks.update(update_req);
+    await octokit.rest.checks.update(update_req);
     consle.log("DONE")
   } else {
     console.log("Didn't find check");
