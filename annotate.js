@@ -64,8 +64,8 @@ async function createCheck(check_name, title, annotations, commitSha) {
   //const octokit = new github.GitHub(String(GH_TOKEN));
   const req = {
     //headers: {
-      authorization: `token ${APP_GH_KEY}`
-    },
+    //  authorization: `token ${APP_GH_KEY}`
+    //},
     owner,
     repo,
     //ref: core.getInput('commit_sha'),
