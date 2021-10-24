@@ -86,22 +86,11 @@ async function createCheck(check_name, title, annotations, commitSha) {
   if(res.data.total_count >= 1) {
     console.log("Found check");
     //console.log(res.data.check_runs[0]);
- console.log(res.data.check_runs[0]);
+    
+    // Thsi is the build process
+    // console.log(res.data.check_runs[0]);
     const check_run_id = res.data.check_runs[0].id
     console.log("CHECK RUN ID: " + check_run_id);
-
-    const update_req = {
-      header: {
-        authorization: ("token: " + GITHUB_TOKEN)
-      },
-      repo,
-      check_run_id,
-      output: {
-        title,
-        summary: `${annotations.length} errors(s) found`,
-        annotations: annotations.slice(0, 50),
-      }
-    }
     console.log("STep 2")
     //console.log(update_req)
     //await octokit.rest.checks.update(update_req).
@@ -143,7 +132,7 @@ const runTest3 = async(check_run_id) => {
 
 // This one will work
 const runTest4 = async(check_run_id) => {
-  console.log("Check run id: " + check_run_id);
+  console.log("Starting Check 4");
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
     headers: {
       authorization: `token ${GITHUB_TOKEN}`
@@ -159,7 +148,7 @@ const runTest4 = async(check_run_id) => {
 
 // Create the annotation
 const runTest5 = async(check_run_id, annotations) => {
-  console.log("Check run id: " + check_run_id);
+  console.log("Starting Check 5");
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
     headers: {
       authorization: `token ${APP_GH_KEY}`
