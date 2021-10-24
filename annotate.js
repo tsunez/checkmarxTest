@@ -41,12 +41,11 @@ console.log("GH TOken: " + GITHUB_TOKEN);
 //const authentication = await auth();
 
 // Token based auth, if tokens are supported
-const octokit = new Octokit({
- auth: GITHUB_TOKEN,
-});
+//const octokit = new Octokit({
+//  auth: GITHUB_TOKEN,
+//});
 
-
-//const octokit = new Octokit({});
+const octokit = new Octokit({});
 
 // Get GitHub not a constructor
 //const octokit = new github.GitHub(String(APP_GH_KEY));
@@ -108,13 +107,24 @@ async function createCheck(check_name, title, annotations, commitSha) {
       }
     }
     console.log("STep 2")
-    console.log(update_req)
-    await octokit.rest.checks.update(update_req).
-	catch(error => { console.log('caught', error.message); });
-    console.log("DONE V3")
+    //console.log(update_req)
+    //await octokit.rest.checks.update(update_req).
+	//catch(error => { console.log('caught', error.message); });
+   await runTest2(check_run_id); 
+    console.log("DONE V4")
   } else {
     console.log("Didn't find check");
   } 
+}
+
+const runTest2 = async(check_run_id) => {
+  await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
+    owner,
+    repo,
+    check_run_id,
+    name: 'runTest2'
+  }).
+    catch(error => { console.log('caught', error.message); });
 }
 
 
@@ -195,8 +205,6 @@ function makeAnnotation(raw) {
     message: 'I am a message'
   }
 }
-
-
 
 
 
