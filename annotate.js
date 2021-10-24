@@ -70,7 +70,7 @@ async function createCheck(check_name, title, annotations, commitSha) {
   console.log("STEP 1");
   console.log(req)
   const res = await octokit.checks.listForRef(req);
-  console.log(res)e
+  console.log(res)
 
   const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
   console.log("CHECK RUN ID: " + check_run_id);
