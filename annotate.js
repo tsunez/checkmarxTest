@@ -22,15 +22,15 @@ const GITHUB_RUN_ID = process.env.GITHUB_RUN_ID;
 console.log("RUN ID: " + GITHUB_RUN_ID);
 
 // Token based auth, if tokens are supported
-/*
+
 const octokit = new Octokit({
-    auth: GH_TOKEN,
+    auth: APP_GH_KEY,
 });
-*/
 
 //const octokit = new Octokit({});
 
- const octokit = new github.GitHub(String(APP_GH_KEY));
+// Get GitHub not a constructor
+//const octokit = new github.GitHub(String(APP_GH_KEY));
 
 
 //const octokit = new Octokit({
