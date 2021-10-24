@@ -25,7 +25,7 @@ console.log("RUN ID: " + GITHUB_RUN_ID);
 // Token based auth, if tokens are supported
 const octokit = new Octokit({
     authStrategy: createAppAuth,
-    auth: { APP_CLIENT_ID, GITHUB_GH_KEY },
+    auth: { APP_CLIENT_ID, APP_GH_KEY },
 });
 
 
