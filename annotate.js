@@ -20,6 +20,7 @@ const GITHUB_RUN_ID = process.env.GITHUB_RUN_ID;
 //const APP_KEY = process.env.APP_KEY;
 
 console.log("RUN ID: " + GITHUB_RUN_ID);
+console.log("App GH Key: " + APP_GH_KEY); 
 
 // Token based auth, if tokens are supported
 /*
