@@ -67,11 +67,13 @@ async function createCheck(check_name, title, annotations, commitSha) {
     ref: commitSha,
     check_name: check_name
   }
+  console.log("STEP 1");
   console.log(req)
   const res = await octokit.checks.listForRef(req);
-  console.log(res)
+  console.log(res)e
 
   const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
+  console.log("CHECK RUN ID: " + check_run_id);
 
   const update_req = {
     headers: {
@@ -86,8 +88,10 @@ async function createCheck(check_name, title, annotations, commitSha) {
     }
   }
 
+  console.log("STep 2")
   console.log(update_req)
   await octokit.checks.update(update_req);
+  consle.log("DONE");
 }
 
 
