@@ -75,22 +75,18 @@ console.log(val)
 
 async function createCheck(check_name, title, annotations, commitSha) {
   const req = {
-    //headers: {
-    //  authorization: `token ${APP_GH_KEY}`
-    //},
     owner,
     repo,
-    //ref: core.getInput('commit_sha'),
     ref: commitSha,
   }
   console.log("STEP 1");
-  //console.log(req)
   const res = await octokit.rest.checks.listForRef(req);
   //console.log(res)
 
   if(res.data.total_count >= 1) {
     console.log("Found check");
     //console.log(res.data.check_runs[0]);
+ console.log(res.data.check_runs[0]);
     const check_run_id = res.data.check_runs[0].id
     console.log("CHECK RUN ID: " + check_run_id);
 
@@ -110,7 +106,9 @@ async function createCheck(check_name, title, annotations, commitSha) {
     //console.log(update_req)
     //await octokit.rest.checks.update(update_req).
 	//catch(error => { console.log('caught', error.message); });
-   await runTest4(check_run_id); 
+    await runtest4(check_run_id); 
+    await runtest5(check_run_id, annotations); 
+
     console.log("DONE V4")
   } else {
     console.log("Didn't find check");
@@ -143,6 +141,7 @@ const runTest3 = async(check_run_id) => {
     catch(error => { console.log('caught', error.message); });
 }
 
+// This one will work
 const runTest4 = async(check_run_id) => {
   console.log("Check run id: " + check_run_id);
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
@@ -155,7 +154,30 @@ const runTest4 = async(check_run_id) => {
     name: 'runTest2'
   }).
     catch(error => { console.log('caught', error.message); });
+  console.log("Check done");
 }
+
+// Create the annotation
+const runTest5 = async(check_run_id, annotations) => {
+  console.log("Check run id: " + check_run_id);
+  await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
+    headers: {
+      authorization: `token ${APP_GH_KEY}`
+    },
+    owner,
+    repo,
+    check_run_id,
+    output: {
+      title: "Test title!",
+      summary: `${annotations.length} errors(s) found`,
+      annotations: annotations.slice(0, 50),
+    }
+  }).
+    catch(error => { console.log('caught', error.message); });
+}
+
+
+
 
 
 
