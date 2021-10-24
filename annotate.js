@@ -79,6 +79,8 @@ async function createCheck(check_name, title, annotations, commitSha) {
   if(res.total_count > 1) {
     console.log("Found check");
     console.log(res.check_runs[0]);
+  } else {
+    console.log("Didn't find check");
   }
 
   return;
