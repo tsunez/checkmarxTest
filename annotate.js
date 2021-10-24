@@ -64,13 +64,14 @@ const repo = 'checkmarxTest';
 const ref =  'heads/gh_action_test';
 
 
+/* This is supposed to check the token
 console.log("Checking tokenV2");
 const val = await octokit.rest.apps.checkToken({
   APP_CLIENT_ID,
   APP_GH_KEY,
 });
 console.log(val)
-
+*/
 
 
 async function createCheck(check_name, title, annotations, commitSha) {
@@ -95,6 +96,9 @@ async function createCheck(check_name, title, annotations, commitSha) {
     console.log("CHECK RUN ID: " + check_run_id);
 
     const update_req = {
+      header: {
+        authorization: ("token: " + GITHUB_TOKEN)
+      },
       repo,
       check_run_id,
       output: {
@@ -107,7 +111,7 @@ async function createCheck(check_name, title, annotations, commitSha) {
     console.log(update_req)
     await octokit.rest.checks.update(update_req).
 	catch(error => { console.log('caught', error.message); });
-    console.log("DONE V2")
+    console.log("DONE V3")
   } else {
     console.log("Didn't find check");
   } 
@@ -168,7 +172,7 @@ const createAnotations = async () => {
     */
     console.log("Done creating check")
 }
-//createAnotations()
+createAnotations()
 
 
 function makeAnnotation(raw) {
