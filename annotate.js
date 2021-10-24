@@ -61,7 +61,6 @@ const ref =  'heads/gh_action_test';
 
 
 async function createCheck(check_name, title, annotations, commitSha) {
-  //const octokit = new github.GitHub(String(GH_TOKEN));
   const req = {
     //headers: {
     //  authorization: `token ${APP_GH_KEY}`
@@ -72,17 +71,19 @@ async function createCheck(check_name, title, annotations, commitSha) {
     ref: commitSha,
   }
   console.log("STEP 1");
-  console.log(req)
+  //console.log(req)
   const res = await octokit.rest.checks.listForRef(req);
-  console.log(res)
+  //console.log(res)
 
   if(res.data.total_count >= 1) {
     console.log("Found check");
     console.log(res.data.check_runs[0]);
+    const check_run_id = res.data.check_runs[0].id
+    console.log("CHECK RUN ID: " + check_run_id);
   } else {
     console.log("Didn't find check");
   }
-
+ 
   return;
   /*
   const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
