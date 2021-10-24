@@ -55,11 +55,12 @@ const ref =  'heads/gh_action_test';
 
 
 
-async function createCheck(check_name, title, annotations) {
+async function createCheck(check_name, title, annotations, commitSha) {
   const octokit = new github.GitHub(String(GITHUB_TOKEN));
   const req = {
     repo,
-    ref: core.getInput('commit_sha'),
+    //ref: core.getInput('commit_sha'),
+    ref: commitSha
     check_name: check_name
   }
   console.log(req)
@@ -94,9 +95,9 @@ const createAnotations = async () => {
         repo,
         ref
     })
-    const headSha = refData.object.sha
-    console.log("sha: " + headSha)
-    console.log("core sha: " + core.getInput('commit_sha'))
+    const commitSha = refData.object.sha
+    console.log("sha: " + commitSha)
+    //console.log("core sha: " + core.getInput('commit_sha'))
     let check_run_id = GITHUB_RUN_ID;
    
 
@@ -116,7 +117,7 @@ const createAnotations = async () => {
     //const checkName = core.getInput('check_name');
     //console.log("Check Name: " + checkName);
     const checkName = "cx Errors Happened!";
-    await createCheck(checkName, 'failures detected', annotations);
+    await createCheck(checkName, 'failures detected', annotations, commitSha);
 
 
     //
