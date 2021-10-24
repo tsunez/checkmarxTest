@@ -64,6 +64,7 @@ async function createCheck(check_name, title, annotations, commitSha) {
     headers: {
       authorization: `token ${APP_GH_KEY}`
     },
+    owner,
     repo,
     //ref: core.getInput('commit_sha'),
     ref: commitSha,
@@ -71,7 +72,7 @@ async function createCheck(check_name, title, annotations, commitSha) {
   }
   console.log("STEP 1");
   console.log(req)
-  const res = await octokit.checks.listForRef(req);
+  const res = await octokit.rest.checks.listForRef(req);
   console.log(res)
 
   const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
