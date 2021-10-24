@@ -110,13 +110,14 @@ async function createCheck(check_name, title, annotations, commitSha) {
     //console.log(update_req)
     //await octokit.rest.checks.update(update_req).
 	//catch(error => { console.log('caught', error.message); });
-   await runTest2(check_run_id); 
+   await runTest3(check_run_id); 
     console.log("DONE V4")
   } else {
     console.log("Didn't find check");
   } 
 }
 
+// Will show authentication error
 const runTest2 = async(check_run_id) => {
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
     owner,
@@ -127,6 +128,19 @@ const runTest2 = async(check_run_id) => {
     catch(error => { console.log('caught', error.message); });
 }
 
+// Will show authentication error
+const runTest3 = async(check_run_id) => {
+  await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
+    headers: {
+      authorization: `token ${APP_GH_KEY}`
+    },
+    owner,
+    repo,
+    check_run_id,
+    name: 'runTest2'
+  }).
+    catch(error => { console.log('caught', error.message); });
+}
 
 
 
