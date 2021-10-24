@@ -52,6 +52,40 @@ const owner = 'tsunez';
 const repo = 'checkmarxTest';
 const ref =  'heads/gh_action_test';
 
+
+
+
+async function createCheck(check_name: string, title: string, annotations: Annotation[]) {
+  const octokit = new github.GitHub(String(GITHUB_TOKEN));
+  const req = {
+    ...github.context.repo,
+    ref: core.getInput('commit_sha'),
+    check_name: check_name
+  }
+  console.log(req)
+  const res = await octokit.checks.listForRef(req);
+  console.log(res)
+
+  const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
+
+  const update_req = {
+    ...github.context.repo,
+    check_run_id,
+    output: {
+      title,
+      summary: `${annotations.length} errors(s) found`,
+      annotations: annotations.slice(0, 50),
+    }
+  }
+
+  console.log(update_req)
+  await octokit.checks.update(update_req);
+}
+
+
+
+
+
 const createAnotations = async () => {
 
     // Locate the branch to put the annotations on
@@ -79,9 +113,10 @@ const createAnotations = async () => {
       });
     annotations.push(annotation);
 
-    const checkName = core.getInput('check_name');
-    console.log("Check Name: " + checkName);
-    //await createCheck(checkName, 'failures detected', annotations);
+    //const checkName = core.getInput('check_name');
+    //console.log("Check Name: " + checkName);
+    const checkName = "cx Errors Happened!";
+    await createCheck(checkName, 'failures detected', annotations);
 
 
     //
