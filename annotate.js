@@ -95,8 +95,8 @@ async function createCheck(check_name, title, annotations, commitSha) {
     //console.log(update_req)
     //await octokit.rest.checks.update(update_req).
 	//catch(error => { console.log('caught', error.message); });
-    await runtest4(check_run_id); 
-    await runtest5(check_run_id, annotations); 
+    await runTest4(check_run_id); 
+    await runTest5(check_run_id, annotations); 
 
     console.log("DONE V4")
   } else {
