@@ -23,7 +23,7 @@ console.log("RUN ID: " + GITHUB_RUN_ID);
 
 // Token based auth, if tokens are supported
 const octokit = new Octokit({
-    auth: APP_GH_KEY,
+    auth: GH_TOKEN,
 });
 
 
@@ -80,9 +80,6 @@ async function createCheck(check_name, title, annotations, commitSha) {
     console.log("CHECK RUN ID: " + check_run_id);
 
     const update_req = {
-      //headers: {
-      //  authorization: `token ${APP_GH_KEY}`
-      //},
       repo,
       check_run_id,
       output: {
