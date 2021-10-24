@@ -60,7 +60,7 @@ async function createCheck(check_name, title, annotations, commitSha) {
   const req = {
     repo,
     //ref: core.getInput('commit_sha'),
-    ref: commitSha
+    ref: commitSha,
     check_name: check_name
   }
   console.log(req)
