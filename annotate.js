@@ -177,7 +177,7 @@ function makeAnnotation(raw) {
   return {
     path: normalized_path,
     start_line: 4,
-    end_line: 4,
+    end_line: 8,
     start_column: 0,
     end_column: 0,
     annotation_level: annotation_level,
