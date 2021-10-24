@@ -64,6 +64,13 @@ const repo = 'checkmarxTest';
 const ref =  'heads/gh_action_test';
 
 
+console.log("Checking token");
+const val = await octokit.rest.apps.checkToken({
+  APP_CLIENT_ID,
+  APP_GH_KEY,
+});
+console.log(val)
+
 
 
 async function createCheck(check_name, title, annotations, commitSha) {
@@ -161,7 +168,7 @@ const createAnotations = async () => {
     */
     console.log("Done creating check")
 }
-createAnotations()
+//createAnotations()
 
 
 function makeAnnotation(raw) {
