@@ -130,6 +130,7 @@ const runTest3 = async(check_run_id) => {
     catch(error => { console.log('caught', error.message); });
 }
 
+// authorization: `token ${GITHUB_TOKEN}`
 // This one will work
 const runTest4 = async(check_run_id) => {
   console.log("Starting Check 4");
@@ -151,7 +152,7 @@ const runTest5 = async(check_run_id, annotations) => {
   console.log("Starting Check 5");
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
     headers: {
-      authorization: `token ${APP_GH_KEY}`
+      authorization: `token ${GITHUB_TOKEN}`
     },
     owner,
     repo,
