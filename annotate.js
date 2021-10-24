@@ -57,8 +57,11 @@ const ref =  'heads/gh_action_test';
 
 
 async function createCheck(check_name, title, annotations, commitSha) {
-  const octokit = new github.GitHub(String(GH_TOKEN));
+  //const octokit = new github.GitHub(String(GH_TOKEN));
   const req = {
+    headers: {
+      authorization: `token ${APP_GH_KEY}`
+    },
     repo,
     //ref: core.getInput('commit_sha'),
     ref: commitSha,
@@ -71,6 +74,9 @@ async function createCheck(check_name, title, annotations, commitSha) {
   const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
 
   const update_req = {
+    headers: {
+       authorization: `token ${APP_GH_KEY}`
+    },
     repo,
     check_run_id,
     output: {
