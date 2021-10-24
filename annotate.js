@@ -129,11 +129,11 @@ const createAnotations = async () => {
     //
     let annotations = [];
     const annotation = makeAnnotation({
-        filename: ".github/workflows/main.yml",
-        lineNumber: parseInt(1),
-        columnNumber: parseInt(1),
-        errorCode: "1",
-        errorDesc: "Test desc",
+        path: ".github/workflows/main.yml",
+        start_line: parseInt(1),
+        end_line: parseInt(3),
+	annotation_level: "notice",
+        message: "Test desc",
       });
     annotations.push(annotation);
 
