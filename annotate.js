@@ -77,36 +77,29 @@ async function createCheck(check_name, title, annotations, commitSha) {
 
   if(res.data.total_count >= 1) {
     console.log("Found check");
-    console.log(res.data.check_runs[0]);
+    //console.log(res.data.check_runs[0]);
     const check_run_id = res.data.check_runs[0].id
     console.log("CHECK RUN ID: " + check_run_id);
+
+    const update_req = {
+      headers: {
+        authorization: `token ${APP_GH_KEY}`
+      },
+      repo,
+      check_run_id,
+      output: {
+        title,
+        summary: `${annotations.length} errors(s) found`,
+        annotations: annotations.slice(0, 50),
+      }
+    }
+    console.log("STep 2")
+    console.log(update_req)
+    await octokit.checks.update(update_req);
+    consle.log("DONE")
   } else {
     console.log("Didn't find check");
-  }
- 
-  return;
-  /*
-  const check_run_id = res.data.check_runs.filter(check => check.name === check_name)[0].id
-  console.log("CHECK RUN ID: " + check_run_id);
-
-  const update_req = {
-    headers: {
-       authorization: `token ${APP_GH_KEY}`
-    },
-    repo,
-    check_run_id,
-    output: {
-      title,
-      summary: `${annotations.length} errors(s) found`,
-      annotations: annotations.slice(0, 50),
-    }
-  }
-
-  console.log("STep 2")
-  console.log(update_req)
-  await octokit.checks.update(update_req);
-  consle.log("DONE");
-  */
+  } 
 }
 
 
