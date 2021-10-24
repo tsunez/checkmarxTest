@@ -34,6 +34,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 
 console.log("RUN ID: " + GITHUB_RUN_ID);
+console.log("GH TOken: " + GITHUB_TOKEN);
 
 // Use actions environment variable GITHUB_TOKEN
 //const auth = createActionAuth();
