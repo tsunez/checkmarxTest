@@ -18,13 +18,14 @@ const GITHUB_RUN_ID = process.env.GITHUB_RUN_ID;
 //const APP_CLIENT_ID = process.env.APP_ClIENT_ID;
 //const APP_SECRET = process.env.APP_SECRET;
 //const APP_KEY = process.env.APP_KEY;
+const APP_CLIENT_ID = process.env.APP_CLIENT_ID;
 
 console.log("RUN ID: " + GITHUB_RUN_ID);
 
 // Token based auth, if tokens are supported
 const octokit = new Octokit({
     authStrategy: createAppAuth,
-    auth: { appId, GITHUB_GH_KEY },
+    auth: { APP_CLIENT_ID, GITHUB_GH_KEY },
 });
 
 
