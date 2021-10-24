@@ -98,7 +98,7 @@ async function createCheck(check_name, title, annotations, commitSha) {
     }
     console.log("STep 2")
     console.log(update_req)
-    await octokit.checks.update(update_req).
+    await octokit.rest.checks.update(update_req).
 	catch(error => { console.log('caught', error.message); });
     console.log("DONE V2")
   } else {
@@ -129,11 +129,11 @@ const createAnotations = async () => {
     //
     let annotations = [];
     const annotation = makeAnnotation({
-        filename: "",
+        filename: "InSecure.php",
         lineNumber: parseInt(1),
         columnNumber: parseInt(1),
-        errorCode: "",
-        errorDesc: "",
+        errorCode: "1",
+        errorDesc: "Test desc",
       });
     annotations.push(annotation);
 
