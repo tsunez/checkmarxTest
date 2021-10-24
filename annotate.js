@@ -176,6 +176,7 @@ const runTest6 = async(check_run_id, annotations, commitSha) => {
     },
     owner,
     repo,
+    name: "AST Test Annotation Check",
     head_sha: commitSha,
     output: {
       title: "Test title!",
