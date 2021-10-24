@@ -96,7 +96,8 @@ async function createCheck(check_name, title, annotations, commitSha) {
     //await octokit.rest.checks.update(update_req).
 	//catch(error => { console.log('caught', error.message); });
     await runTest4(check_run_id); 
-    await runTest5(check_run_id, annotations); 
+    //await runTest5(check_run_id, annotations); 
+    await runTest6(check_run_id, annotations);
 
     console.log("DONE V4")
   } else {
@@ -147,7 +148,7 @@ const runTest4 = async(check_run_id) => {
   console.log("Check done");
 }
 
-// Create the annotation
+// Create the annotation via an update operation
 const runTest5 = async(check_run_id, annotations) => {
   console.log("Starting Check 5");
   await octokit.request('PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}', {
@@ -165,6 +166,24 @@ const runTest5 = async(check_run_id, annotations) => {
   }).
     catch(error => { console.log('caught', error.message); });
 }
+
+// Create the annotation as a new check
+const runTest6 = async(check_run_id, annotations) => {
+  console.log("Starting Check 5");
+  await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
+    headers: {
+      authorization: `token ${GITHUB_TOKEN}`
+    },
+    owner,
+    repo,
+    output: {
+      title: "Test title!",
+      summary: `${annotations.length} errors(s) found`,
+    }
+  }).
+    catch(error => { console.log('caught', error.message); });
+}
+
 
 
 
