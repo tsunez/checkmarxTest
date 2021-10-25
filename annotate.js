@@ -176,7 +176,7 @@ const runTest6 = async(check_run_id, anno, commitSha) => {
     },
     owner,
     repo,
-    name: "AST Test Annotation Check MONDAY",
+    name: "AST Test Annotation Check MONDAYV2",
     head_sha: commitSha,
     // If conclusion is provided status will automatically be set to completed.
     //status: "completed",
