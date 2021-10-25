@@ -184,6 +184,7 @@ const runTest6 = async(check_run_id, annotations, commitSha) => {
     output: {
       title: "Test title!",
       summary: `${annotations.length} errors(s) found`,
+      annotations: annotations.slice(0, 50),
     }
   }).
     catch(error => { console.log('caught', error.message); });
