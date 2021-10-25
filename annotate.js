@@ -168,7 +168,7 @@ const runTest5 = async(check_run_id, annotations) => {
 }
 
 // Create the annotation as a new check
-const runTest6 = async(check_run_id, annotations, commitSha) => {
+const runTest6 = async(check_run_id, anno, commitSha) => {
   console.log("Starting Check 5");
   await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
     headers: {
@@ -184,7 +184,7 @@ const runTest6 = async(check_run_id, annotations, commitSha) => {
     output: {
       title: "Test title!",
       summary: `${annotations.length} errors(s) found`,
-      annotations: annotations.slice(0, 50),
+      annotations: anno.slice(0, 50),
     }
   }).
     catch(error => { console.log('caught', error.message); });
@@ -215,6 +215,17 @@ const createAnotations = async () => {
     /// Lets add some annotations
     //
     let annotations = [];
+    annotations.push(
+	{
+        path: "InSecure.php",
+        start_line: parseInt(1),
+        end_line: parseInt(3),
+        annotation_level: "notice",
+        message: "Test desc",
+	title: "Test Annotation",
+      });
+console.log(annotations);
+/*
     const annotation = makeAnnotation({
         path: ".github/workflows/main.yml",
         start_line: parseInt(1),
@@ -223,7 +234,7 @@ const createAnotations = async () => {
         message: "Test desc",
       });
     annotations.push(annotation);
-
+*/
     //const checkName = core.getInput('check_name');
     //console.log("Check Name: " + checkName);
     const checkName = "cx Errors Happened!";
