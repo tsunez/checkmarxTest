@@ -178,6 +178,7 @@ const runTest6 = async(check_run_id, annotations, commitSha) => {
     repo,
     name: "AST Test Annotation Check",
     head_sha: commitSha,
+    status: "completed",
     output: {
       title: "Test title!",
       summary: `${annotations.length} errors(s) found`,
