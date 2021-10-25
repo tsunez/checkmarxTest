@@ -180,7 +180,7 @@ const runTest6 = async(check_run_id, annotations, commitSha) => {
     head_sha: commitSha,
     // If conclusion is provided status will automatically be set to completed.
     //status: "completed",
-    conclusion: "Finished test!",
+    conclusion: "success",
     output: {
       title: "Test title!",
       summary: `${annotations.length} errors(s) found`,
@@ -189,7 +189,7 @@ const runTest6 = async(check_run_id, annotations, commitSha) => {
     catch(error => { console.log('caught', error.message); });
 }
 
-
+//  ["success", "failure", "neutral", "cancelled", "timed_out", "action_required", "skipped"].
 
 
 
