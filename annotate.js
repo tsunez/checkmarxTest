@@ -183,7 +183,7 @@ const runTest6 = async(check_run_id, anno, commitSha) => {
     conclusion: "success",
     output: {
       title: "Test title!",
-      summary: `${annotations.length} errors(s) found`,
+      summary: `${anno.length} errors(s) found`,
       annotations: anno.slice(0, 50),
     }
   }).
