@@ -5,6 +5,7 @@ on:
       - main
       - master
       - gh_action_test
+      - san_diego
 
 jobs:
   build:
