@@ -219,9 +219,9 @@ const createAnotations = async () => {
 	{
         path: "InSecure.php",
         start_line: parseInt(1),
-        end_line: parseInt(3),
+        end_line: parseInt(1),
         annotation_level: "notice",
-        message: "Test desc",
+        message: "Test descV2",
 	title: "Test Annotation",
       });
 console.log(annotations);
