@@ -11,8 +11,8 @@
 //
 /// XSS example
 //
-$var = $_POST['var'];
-echo "<div>$var</div>\n";
+//$var = $_POST['var'];
+//echo "<div>$var</div>\n";
 
 
 //
