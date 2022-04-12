@@ -3,7 +3,7 @@
 // Updated to trigger CxFlow 451
 
 
-// Updated to trigger CxFlow 385
+// Updated to trigger CxFlow 386
 // First a SQL Injection attack V9
 $var = $_POST['var'];
 mysql_query("SELECT * FROM sometable WHERE id = $var");
