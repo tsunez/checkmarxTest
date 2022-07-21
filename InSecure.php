@@ -1,7 +1,10 @@
 <?php
 
-// Updated to trigger CxFlow 467
+// Updated to trigger CxFlow 470
 
+
+
+echo "This is something different and really hard to write code";
 
 // Updated to trigger CxFlow 386
 // First a SQL Injection attack V9
