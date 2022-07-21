@@ -1,9 +1,9 @@
 <?php
 
+
 // Updated to trigger CxFlow 468
 
-
-echo "This will conflict";
+echo "This is something different and really hard to write code";
 
 // Updated to trigger CxFlow 386
 // First a SQL Injection attack V9
