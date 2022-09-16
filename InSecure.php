@@ -5,7 +5,7 @@
 
 echo "This is something different and really hard to write code";
 
-// Updated to trigger CxFlow 386
+// Updated to trigger CxFlow 387
 // First a SQL Injection attack V9
 $var = $_POST['var'];
 mysql_query("SELECT * FROM sometable WHERE id = $var");
